@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "outDir": "lib",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "declaration": true,
+    "declarationDir": "lib",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "paths": {
+      "@app-story-book/*": [".storybook/*"],
+      "@story-book-utilities": [".storybook/utilities/index.ts"],
+
+      "@src/*": ["src/*"],
+
+      "@common-types": ["src/types.ts"],
+
+      "@fonts/*": ["src/assets/fonts/*"],
+      "@icons/*": ["src/assets/img/icons/*"],
+      "@img/*": ["src/assets/img/*"],
+
+      "@global-styles": ["src/styles/global-styles/index.ts"],
+      "@app-theme": ["src/styles/theme/index.ts"],
+      "@mixins": ["src/styles/mixins/index.ts"],
+      "@keyframes": ["src/styles/keyframes/index.ts"],
+
+      "@typography": ["src/components/typography/index.ts"],
+      "@components/*": ["src/components/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "custom.d.ts",
+    "styled.d.ts"
+  ],
+  "exclude": ["node_modules", "build"]
+}
