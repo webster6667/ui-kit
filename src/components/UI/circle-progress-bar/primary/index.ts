@@ -1,1 +1,1 @@
-export * from './circle-progress-bar'
+export * from './primary-circle-progress-bar'
