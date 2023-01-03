@@ -9,7 +9,7 @@ export default {
   component: PrimarySelect,
 } as Meta;
 
-const Template: Story<SelectProps<{name: string, id: number}>> = (args) => {
+const Template: Story<SelectProps<{name: string, id: number}, boolean>> = (args) => {
     const options = [
         {name: 'ua', id: '0'},
         {name: 'en', id: '1'},
@@ -24,20 +24,16 @@ const Template: Story<SelectProps<{name: string, id: number}>> = (args) => {
               options={options}
               value={value}
               onChange={setValue}
-              optionValueKey={'id'}
+              optionValueKey='id'
+              optionLabelKey='name'
           >
               {(SelectItem, {id, name}) => {
-                  return (<SelectItem key={id} >
+                  return (<SelectItem key={id}  >
                       {name}
                   </SelectItem>)
               }}
           </PrimarySelect>
 
-          <br/>
-
-          {value.map(({name}) => {
-              return <div>{name}</div>
-          })}
       </>)
 };
 

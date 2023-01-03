@@ -22,7 +22,7 @@ export const primaryTheme = {
         },
         border: {
             primary: '#d2d2d2',
-        }
+        },
     },
     transitionDuration: {
         xs: '0.2s',
@@ -36,5 +36,8 @@ export const primaryTheme = {
     zLayer: {
        first: 1,
        second: 999
+    },
+    boxShadow: {
+        primary: '1px 1px 5px silver'
     }
 }

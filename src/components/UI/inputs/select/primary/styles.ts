@@ -1,101 +1,80 @@
-import styled from 'styled-components'
-import {Text} from '@typography'
-import {centerBlockInsideRelativeWrapper, stretchBlockOnRelativeWrapper} from "@mixins"
+import styled, {css} from 'styled-components'
+import {centerBlockInsideRelativeWrapper} from "@mixins"
 import {sizes} from "./const"
 
-import { SelectProps } from './types'
+import {SelectInputWrapperProps, SelectItemProps} from './types'
 
-export const SelectInputWrapper = styled.div`
+export const Wrapper = styled.div`
     position: relative;
-    padding: 18px 15px 7px;
-    border: 1px solid silver;
 `
-//
-// export const ShapeWrapper = styled.div<Required<Pick<RadioProps, 'size'>>>`
-//     position: relative;
-//     width: ${({ size = 'md' }) => sizes[size].radioButton}px;
-//     height: ${({ size = 'md' }) => sizes[size].radioButton}px;
-//
-//     border-radius: 50%;
-//
-//     &:before  {
-//       content: '';
-//       ${stretchBlockOnRelativeWrapper()};
-//       background: ${({theme}) => theme.palette.colors.secondary};
-//       border-radius: 50%;
-//       opacity: 0.1;
-//     }
-//
-//     &:before {
-//       transform: scale(0);
-//     }
-//
-//     &:hover:before {
-//         transform: scale(1.8);
-//         transition: transform ${({ theme }) => theme.transitionDuration.xs} ease;
-//     }
-// `
-//
-// export const Shape = styled.div<Required<Pick<RadioProps, 'size'>>>`
-//     position: relative;
-//     z-index: ${({ theme }) => theme.zLayer.first};
-//     width: ${({ size = 'md' }) => sizes[size].radioButton}px;
-//     height: ${({ size = 'md' }) => sizes[size].radioButton}px;
-//
-//     background-color: ${({ theme }) => theme.palette.colors.quinary};
-//
-//     border-radius: 50%;
-//     border: 1px solid silver;
-//
-//     &:before, &:after {
-//       content: '';
-//       border-radius: 50%;
-//     }
-//
-//     &:before {
-//       ${stretchBlockOnRelativeWrapper({offset: -1})};
-//       border: 1px solid ${({ theme }) => theme.palette.colors.primary};
-//       opacity: 0;
-//     }
-//
-//     &:after {
-//         width: ${({ size = 'md' }) => sizes[size].checkedCircleSize}px;
-//         height: ${({ size = 'md' }) => sizes[size].checkedCircleSize}px;
-//
-//         background-color: ${({ theme }) => theme.palette.colors.primary};
-//
-//         ${centerBlockInsideRelativeWrapper({additionalTransformValues: 'scale(0)'})};
-//     }
-// `
-//
-// export const HiddenRadioButton = styled.input`
-//     position: absolute;
-//     opacity: 0;
-//     visibility: hidden;
-//
-//     &:checked + ${ShapeWrapper} ${Shape}:after {
-//       ${centerBlockInsideRelativeWrapper({additionalTransformValues: 'scale(1)'})}
-//       transition: transform ${({ theme }) => theme.transitionDuration.xs} ease;
-//     }
-//
-//     &:checked + ${ShapeWrapper} ${Shape}:before, &:focus + ${ShapeWrapper} ${Shape}:before {
-//       transition: opacity ${({ theme }) => theme.transitionDuration.sm} ease;
-//       opacity: 1;
-//     }
-//
-//     &:disabled + ${ShapeWrapper}:before {
-//       display:none;
-//     }
-//
-//     &:disabled + ${ShapeWrapper}, &:disabled ~ ${Text} {
-//       opacity: 0.3;
-//     }
-//
-//     & + * {
-//         cursor: pointer;
-//     }
-//
-//     &:disabled ~ * {
-//       cursor: auto;
-//     }
-// `
+
+export const OptionListWrapper = styled.div`
+    position:absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  
+    box-shadow: ${({ theme }) => theme.boxShadow.primary}
+`
+
+export const Label = styled.div`
+  ${centerBlockInsideRelativeWrapper({axis: 'y'})};
+  left: 15px;
+
+  transform-origin: left;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  color: #8f8f8f;
+  cursor: text;
+`
+
+export const SelectInputWrapper = styled.div<SelectInputWrapperProps>`
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid silver;
+    border-radius: 2px;
+  
+    svg {
+      width: 15px;
+      margin-right: 5px;
+    }
+  
+    & ~ ${OptionListWrapper} {
+      opacity: ${({ isSelectOpen }) => isSelectOpen ? '1' : '0'};
+      visibility: ${({ isSelectOpen }) => isSelectOpen ? 'visible' : 'hidden'};
+      transition: opacity ${({ theme }) => theme.transitionDuration.md} 0s ease, visibility 0s ${({ isSelectOpen, theme }) => isSelectOpen ? '0s' : theme.transitionDuration.md} ease;
+    }
+
+  ${({ hasSelectedValue}) => hasSelectedValue && css`
+
+      & ~ ${Label} {
+        transform: translateY(-150%) scale(0.8);
+      }
+      
+    `}
+  
+    .select-arrow {
+      transform:  rotate(${({ isSelectOpen }) => isSelectOpen ? '180' : '0'}deg);
+    }
+  
+`
+
+
+
+export const SelectedValuesWrapper = styled.div`
+    flex-grow: 1;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+`
+
+export const SelectOption = styled.div<SelectItemProps>`
+    padding: 5px;
+    cursor: pointer;
+    background: ${({ isActive, theme }) => isActive ? theme.palette.backgrounds.primary : theme.palette.colors.quinary};
+`

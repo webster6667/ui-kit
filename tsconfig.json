@@ -40,7 +40,9 @@
       "@keyframes": ["src/styles/keyframes/index.ts"],
 
       "@typography": ["src/components/typography/index.ts"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+
+      "@hook": ["src/hooks/index.ts"]
     }
   },
   "include": [

@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 import { ClearInputNumberArrows } from './types'
 
-export const clearInputNumberArrows: ClearInputNumberArrows = (props= {}) => {
+export const clearInputNumberArrows: ClearInputNumberArrows = () => {
     return css`
       &[type="number"]::-webkit-outer-spin-button,
       &[type="number"]::-webkit-inner-spin-button {

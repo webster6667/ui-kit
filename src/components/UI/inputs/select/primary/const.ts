@@ -7,4 +7,4 @@ export const sizes = {
         radioButton: 20,
         checkedCircleSize: 10
     },
-}
+} as const

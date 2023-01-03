@@ -12,7 +12,4 @@ export default {
 const Template: Story<ButtonProps> = (args) => <PrimaryButton {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = { label: "Button", size: "sm", mod: 'primary' };
-
-export const Secondary = Template.bind({});
-Secondary.args = { label: "Button", size: "sm", mod: 'secondary' };
+Primary.args = { label: "Button", sizeMod: "sm", mod: 'primary' };

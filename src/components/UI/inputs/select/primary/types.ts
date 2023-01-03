@@ -1,17 +1,20 @@
-import {InputHTMLAttributes, FC, ReactNode, Dispatch, SetStateAction, ReactElement, JSXElementConstructor, HTMLAttributes} from 'react';
+import {
+    InputHTMLAttributes,
+    FC,
+    ReactNode,
+    Dispatch,
+    SetStateAction,
+    ReactElement,
+    HTMLAttributes
+} from 'react';
 
-type optionProps = {
-    name: string,
-    value: string | number
-}
-
-export interface SelectItemProps extends HTMLAttributes<any> {
+export interface SelectItemProps extends HTMLAttributes<HTMLDivElement> {
     value?: string | number,
-    isActive?: boolean
-    // children: ReactNode
+    isActive?: boolean,
+    disabled?: boolean
 }
 
-export interface SelectProps<TOptions> extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange' | 'children'> {
+export interface SelectProps<TOption, RIsMultiply extends boolean = false> extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange' | 'children'> {
     /**
      * How large should the button be?
      */
@@ -31,18 +34,20 @@ export interface SelectProps<TOptions> extends Omit<InputHTMLAttributes<HTMLSele
     /**
      * Button modifications
      */
-    options: TOptions[],
+    options: TOption[],
 
-    isMultiply?: boolean,
+    isMultiply?: RIsMultiply,
 
-    value: TOptions | TOptions[],
-    onChange: Dispatch<SetStateAction<TOptions[]>>,
-    children: (SelectItem: FC<SelectItemProps>, option: TOptions) => ReactElement,
-    renderActive: (SelectItem: FC<SelectItemProps>, option: TOptions) => ReactElement,
-    optionValueKey: keyof TOptions
+
+    value: RIsMultiply extends true ? TOption[] : TOption,
+    onChange: RIsMultiply extends true ? Dispatch<SetStateAction<TOption[]>> : Dispatch<SetStateAction<TOption>>,
+    children: (SelectItem: FC<SelectItemProps>, option: TOption, isActive: boolean) => ReactElement,
+    renderActive?: RIsMultiply extends true ? (items: TOption[], deleteOption: (option: TOption) => void) => ReactNode | ReactNode[] : (item: TOption) => ReactNode,
+    optionValueKey: keyof TOption
+    optionLabelKey: keyof TOption
 }
 
-
-export function IsMultiply<T>(value: T, isMultiply: boolean): value is T {
-    return Array.isArray(value) && isMultiply
+export interface SelectInputWrapperProps {
+    isSelectOpen: boolean,
+    hasSelectedValue: boolean
 }

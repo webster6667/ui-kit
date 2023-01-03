@@ -1,6 +1,6 @@
-import React, {FC} from "react";
-import {CheckboxProps} from "./types"
-import { Wrapper, HiddenRadioButton, Shape, ShapeWrapper} from "./styles"
+import React, { FC } from "react";
+import { CheckboxProps } from "./types"
+import { Wrapper, HiddenRadioButton, Shape, ShapeWrapper } from "./styles"
 import {Text} from '@typography'
 
 /**
