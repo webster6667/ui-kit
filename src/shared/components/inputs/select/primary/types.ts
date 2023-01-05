@@ -2,8 +2,6 @@ import {
     InputHTMLAttributes,
     FC,
     ReactNode,
-    Dispatch,
-    SetStateAction,
     ReactElement,
     HTMLAttributes
 } from 'react';
@@ -40,7 +38,7 @@ export interface SelectProps<TOption, RIsMultiply extends boolean = false> exten
 
 
     value: RIsMultiply extends true ? TOption[] : TOption,
-    onChange: RIsMultiply extends true ? Dispatch<SetStateAction<TOption[]>> : Dispatch<SetStateAction<TOption>>,
+    onChange: RIsMultiply extends true ? (value: TOption[]) => void : (value: TOption) => void,
     children: (SelectItem: FC<SelectItemProps>, option: TOption, isActive: boolean) => ReactElement,
     renderActive?: RIsMultiply extends true ? (items: TOption[], deleteOption: (option: TOption) => void) => ReactNode | ReactNode[] : (item: TOption) => ReactNode,
     optionValueKey: keyof TOption

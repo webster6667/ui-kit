@@ -1,4 +1,4 @@
-import React, {ReactElement, FC, Dispatch, SetStateAction, ReactNode} from "react";
+import React, {ReactElement, FC, ReactNode} from "react";
 import {useToggle} from '@hook'
 import {Wrapper, SelectInputWrapper, OptionListWrapper, SelectedValuesWrapper, SelectOption, Label} from "./styles"
 
@@ -32,7 +32,7 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
   renderActive,
   tabIndex = 1,
 }:SelectProps<TOption, RIsMultiply>):ReactElement  => {
-    const IsMultiplySelect = (onChange: Dispatch<SetStateAction<TOption[]>> | Dispatch<SetStateAction<TOption>>, isMultiply?: boolean): onChange is Dispatch<SetStateAction<TOption[]>> => {
+    const IsMultiplySelect = (onChange: ((value: TOption[]) => void) | ((value: TOption) => void), isMultiply?: boolean): onChange is (value: TOption[]) => void => {
         return isMultiply || false;
     }
     const IsSelectValueArray = (value: TOption | TOption[]): value is TOption[] => {
