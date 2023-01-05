@@ -29,18 +29,19 @@
       "@src/*": ["src/*"],
 
       "@common-types": ["src/types.ts"],
+      "@shared/*": ["src/shared/*"],
 
       "@fonts/*": ["src/assets/fonts/*"],
       "@icons/*": ["src/assets/img/icons/*"],
       "@img/*": ["src/assets/img/*"],
 
-      "@global-styles": ["src/styles/global-styles/index.ts"],
-      "@app-theme": ["src/styles/theme/index.ts"],
-      "@mixins": ["src/styles/mixins/index.ts"],
-      "@keyframes": ["src/styles/keyframes/index.ts"],
+      "@global-styles": ["src/shared/styles/global-styles/index.ts"],
+      "@app-theme": ["src/shared/styles/theme/index.ts"],
+      "@mixins": ["src/shared/styles/mixins/index.ts"],
+      "@keyframes": ["src/shared/styles/keyframes/index.ts"],
 
-      "@typography": ["src/components/typography/index.ts"],
-      "@components/*": ["src/components/*"],
+      "@typography": ["src/shared/components/typography/index.ts"],
+      "@shared-components/*": ["src/shared/components/*"],
 
       "@hook": ["src/hooks/index.ts"]
     }

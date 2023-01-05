@@ -1,2 +1,1 @@
-export * from './use-toggle'
-export * from './use-switch'
+export * from '@shared/hooks'
