@@ -1,23 +1,21 @@
 import React, {ReactElement, FC, ReactNode} from "react";
 import {useToggle} from '@hook'
-import {Wrapper, SelectInputWrapper, OptionListWrapper, SelectedValuesWrapper, SelectOption, Label} from "./styles"
+import {Wrapper, SelectInputWrapper, OptionListWrapper, SelectedValuesWrapper, Label} from "./styles"
+import {PrimarySelectOption} from './components/select-option/primary'
+
 
 import { ReactComponent as ArrowDownIcon } from '@icons/arrows/arrow-down.svg'
 import { ReactComponent as CrossIcon } from '@icons/crosses/cross.svg'
 
-import { SelectProps, SelectItemProps } from "./types"
-
-
-export const PrimarySelectOption: FC<SelectItemProps> = ({children, isActive, ...props}) => {
-    return <SelectOption isActive={isActive} {...props} >
-        {children}
-    </SelectOption>
-}
+import { PrimarySelectProps, SelectItemProps } from "./types"
 
 /**
  * Primary UI component for user interaction
  */
-export const PrimarySelect = <TOption extends object, RIsMultiply extends boolean = false>({
+export const PrimarySelect = <
+    TOption extends object,
+    VIsMultiply extends boolean = false
+    >({
   sizeMod = "md",
   mod = 'primary',
   name= 'select',
@@ -31,11 +29,11 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
   value,
   renderActive,
   tabIndex = 1,
-}:SelectProps<TOption, RIsMultiply>):ReactElement  => {
-    const IsMultiplySelect = (onChange: ((value: TOption[]) => void) | ((value: TOption) => void), isMultiply?: boolean): onChange is (value: TOption[]) => void => {
+}:PrimarySelectProps<TOption, VIsMultiply>):ReactElement  => {
+    const IsMultiplySelect = (onChange: ((value: TOption[] | []) => void) | ((value: TOption | undefined) => void), isMultiply?: boolean): onChange is (value: TOption[] | []) => void => {
         return isMultiply || false;
     }
-    const IsSelectValueArray = (value: TOption | TOption[]): value is TOption[] => {
+    const IsSelectValueArray = (value: TOption[] | [] | TOption | undefined): value is TOption[] | [] => {
         return Array.isArray(value)
     }
     const IsRenderForMultiply = (renderActive: ((items: TOption[], deleteOption: (option: TOption) => void) => ReactNode | ReactNode[]) | ((item: TOption) => ReactNode), isMultiply?: boolean): renderActive is (items: TOption[], deleteOption: (option: TOption) => void) => ReactNode | ReactNode[] => {
@@ -66,7 +64,7 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
 
 
     const deleteSelect = (option: TOption) => {
-        if (IsMultiplySelect(onChange, isMultiply) && IsSelectValueArray(value) && value.find((item) => item[optionValueKey] === option[optionValueKey])) {
+        if (onChange && IsMultiplySelect(onChange, isMultiply) && IsSelectValueArray(value) && value.find((item) => item[optionValueKey] === option[optionValueKey])) {
             const a = value.filter((item) => item[optionValueKey] !== option[optionValueKey])
             onChange(a)
         }
@@ -74,17 +72,16 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
 
     const clearSelection = () => {
 
-        if (IsMultiplySelect(onChange, isMultiply)) {
+        if (onChange && IsMultiplySelect(onChange, isMultiply)) {
             onChange([])
-        } else {
-            //@ts-ignore
-            onChange()
+        } else if (onChange) {
+            onChange(undefined)
         }
 
     }
 
     const selectOption = (option: TOption) => {
-        if (IsMultiplySelect(onChange, isMultiply)) {
+        if (onChange && IsMultiplySelect(onChange, isMultiply)) {
 
             if (IsSelectValueArray(value)) {
 
@@ -97,7 +94,7 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
 
             }
 
-        } else if (!IsSelectValueArray(value)) {
+        } else if (!IsSelectValueArray(value) && onChange) {
             (value as TOption)[optionValueKey] === option[optionValueKey]
             onChange(option)
         }
@@ -116,7 +113,7 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
 
         return cloned
     }
-    const optionList = options.map((option) => {
+    const optionList = options && options.map((option) => {
         let isActive = false
 
         if (IsSelectValueArray(value)) {
@@ -129,7 +126,7 @@ export const PrimarySelect = <TOption extends object, RIsMultiply extends boolea
             isActive = true
         }
 
-        const SelectOption = fn(children(PrimarySelectOption, option, isActive), option, isActive)
+        const SelectOption = children && fn(children(PrimarySelectOption, option, isActive), option, isActive)
 
         return SelectOption
     })

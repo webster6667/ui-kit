@@ -72,9 +72,3 @@ export const SelectedValuesWrapper = styled.div`
     overflow: hidden; 
     text-overflow: ellipsis;
 `
-
-export const SelectOption = styled.div<SelectItemProps>`
-    padding: 5px;
-    cursor: pointer;
-    background: ${({ isActive, theme }) => isActive ? theme.palette.backgrounds.primary : theme.palette.colors.quinary};
-`
