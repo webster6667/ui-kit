@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { PrimaryButton } from '@components/UI/inputs/button/primary'
+import { PrimaryButton } from '@shared/components/inputs/button/primary'
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import { PrimaryCircleProgressBar } from "./primary-circle-progress-bar"
