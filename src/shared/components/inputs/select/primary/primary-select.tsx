@@ -54,7 +54,7 @@ export const PrimarySelect = <
                     {
                         IsSelectValueArray(value)
                             ? value.map((item) => (item[optionLabelKey])).join(', ')
-                            : String((value as TOption)[optionValueKey])
+                            : value ? String((value as TOption)[optionValueKey]) : ''
                     }
                 </div>
             }
@@ -95,7 +95,6 @@ export const PrimarySelect = <
             }
 
         } else if (!IsSelectValueArray(value) && onChange) {
-            (value as TOption)[optionValueKey] === option[optionValueKey]
             onChange(option)
         }
     }
@@ -122,7 +121,7 @@ export const PrimarySelect = <
                 isActive = true
             }
 
-        } else if ((value as TOption)[optionValueKey] === option[optionValueKey]) {
+        } else if (value && (value as TOption)[optionValueKey] === option[optionValueKey]) {
             isActive = true
         }
 
