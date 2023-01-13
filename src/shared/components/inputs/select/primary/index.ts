@@ -1,1 +1,1 @@
-export {PrimaryRadio} from './primary-select'
+export {PrimarySelect} from './primary-select'
