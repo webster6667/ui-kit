@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { ChangeHandler } from "@common-types"
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { PrimaryInput } from "./primary-text"
+import { PrimaryInput, PrimaryInputChangeHandler } from "./index"
 import { InputProps } from "./types";
 import { ReactComponent as UserIcon } from '@icons/user.svg'
 import { ReactComponent as HintIcon } from '@icons/hint.svg'
@@ -17,8 +16,7 @@ export default {
 
 const Template: Story<InputProps> = (args) => {
   const [value, setValue] = useState(''),
-        inputChangeHandler:ChangeHandler = (e) => {
-          let value = e.target.value
+        inputChangeHandler:PrimaryInputChangeHandler = (value) => {
           setValue(value)
         }
 
@@ -35,6 +33,12 @@ const Template: Story<InputProps> = (args) => {
           value={value}
           onChange={inputChangeHandler}
           RightIcon={<HintIcon />}
+    />
+    <br/>
+    <PrimaryInput
+          {...args}
+          value={value}
+          onChange={inputChangeHandler}
     />
   </>)
 }

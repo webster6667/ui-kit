@@ -1,6 +1,6 @@
-import React, {FC} from "react";
+import React, {FC, ChangeEventHandler} from "react";
+import {Wrapper, Input, Label, InputWrapper, Error, IconWrapper } from "./styles"
 import {PrimaryInputProps} from "./types"
-import {Wrapper, Input, Label, InputWrapper, Error, IconWrapper} from "./styles"
 
 // Вынести в hoc
 // const [inputType, setInputType] = useState(type),
@@ -19,13 +19,18 @@ export const PrimaryInput:FC<PrimaryInputProps> = ({
    sizeMod= 'md',
    LeftIcon,
    RightIcon,
+   onChange,
    ...props
 })  => {
     const isInputFilled = String(value).length > 0,
           hasError = String(error).length > 0,
           hasLeftIcon = Boolean(LeftIcon),
-          hasRightIcon = Boolean(RightIcon)
-
+          hasRightIcon = Boolean(RightIcon),
+          inputChangeHandler:ChangeEventHandler<HTMLInputElement> = (e) => {
+              let value = e.target.value
+              onChange && onChange(value, e)
+          }
+    
 
     return (<Wrapper>
         <InputWrapper>
@@ -37,6 +42,8 @@ export const PrimaryInput:FC<PrimaryInputProps> = ({
             </IconWrapper>}
             <Input
                 {...props}
+                //@ts-ignore
+                onChange={inputChangeHandler}
                 autoComplete={'off'}
                 value={value}
                 isInputFilled={isInputFilled}

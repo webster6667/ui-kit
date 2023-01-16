@@ -1,10 +1,12 @@
-import {InputHTMLAttributes, HTMLInputTypeAttribute, ReactNode} from 'react';
+import {InputHTMLAttributes, HTMLInputTypeAttribute, ReactNode, ChangeEvent, MouseEvent} from 'react';
 
 type IconFn = () => ReactNode
 
 let PrimaryInputSizeList: 'sm' | 'md'
 
-export interface PrimaryInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
+export type PrimaryInputChangeHandler = (value: string, e: ChangeEvent<HTMLInputElement> | MouseEvent) => void
+
+export interface PrimaryInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'type'> {
     /**
      * Input type
      */
@@ -29,6 +31,10 @@ export interface PrimaryInputProps extends Omit<InputHTMLAttributes<HTMLInputEle
      * Input error text
      */
     error?: string,
+    /**
+     * Input value change handler
+     */
+    onChange?: (value: string, e: ChangeEvent<HTMLInputElement> | MouseEvent) => void
     /**
      * Input left icon
      */

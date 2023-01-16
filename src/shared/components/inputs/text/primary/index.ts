@@ -1,1 +1,2 @@
-export {PrimaryRadio} from './primary-radio'
+export {PrimaryInput} from './primary-text'
+export type {PrimaryInputChangeHandler} from './types'

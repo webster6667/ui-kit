@@ -50,6 +50,7 @@ export const Input = styled.input<InputProps>`
 
     border: 1px solid ${({ hasError, theme }) => hasError ? theme.palette.colors.error : theme.palette.border.primary};
     border-radius: 5px;
+    outline: none;
 
     ${clearInputNumberArrows()}
 
