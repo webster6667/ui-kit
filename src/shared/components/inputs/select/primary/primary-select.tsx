@@ -94,7 +94,7 @@ export const PrimarySelect = <
 
             }
 
-        } else if (!IsSelectValueArray(value) && onChange) {
+        } else if (!IsSelectValueArray(value) && onChange && !IsMultiplySelect(onChange, isMultiply)) {
             onChange(option)
         }
     }
