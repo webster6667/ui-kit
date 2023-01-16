@@ -9,7 +9,7 @@ export default {
   component: PrimarySelectSingle,
 } as Meta;
 
-const Template: Story<PrimarySelectProps<{name: string, id: number}, boolean>> = (args) => {
+const Template: Story<PrimarySelectProps<{name: string, id: string}, boolean>> = (args) => {
     const options = [
         {name: 'ua', id: '0'},
         {name: 'en', id: '1'},
@@ -26,8 +26,8 @@ const Template: Story<PrimarySelectProps<{name: string, id: number}, boolean>> =
               optionValueKey='name'
               optionLabelKey='name'
           >
-              {(SelectItem, {id, name}) => {
-                  return (<SelectItem key={id}  >
+              {(SelectItem, {name}) => {
+                  return (<SelectItem key={name} >
                       {name}
                   </SelectItem>)
               }}

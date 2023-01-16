@@ -15,7 +15,7 @@ const Template: Story<PrimarySelectProps<{name: string, id: number}, boolean>> =
         {name: 'en', id: '1'},
         {name: 'ru', id: '2'},
     ]
-    const [value, setValue] = useState<{name: string, id: string}[]>([
+    const [value, setValue] = useState<{name: string, id: string}[] | []>([
         {name: 'ua', id: '0'},
     ])
 
