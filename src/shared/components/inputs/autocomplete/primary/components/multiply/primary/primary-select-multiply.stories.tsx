@@ -5,7 +5,7 @@ import { PrimarySelectMultiply } from "./primary-select-multiply"
 import { PrimarySelectProps } from "./../../../types";
 
 export default {
-  title: "Inputs/Select/Multiply",
+  title: "Inputs/Autocomplete/Multiply",
   component: PrimarySelectMultiply,
 } as Meta;
 
@@ -16,15 +16,19 @@ const Template: Story<PrimarySelectProps<{name: string, id: string}, boolean>> =
         {name: 'ru', id: '2'},
     ]
     const [value, setValue] = useState<{name: string, id: string}[] | []>([
-        {name: 'ua', id: '0'},
-    ])
+            {name: 'ua', id: '0'},
+        ]),
+        [inputValue, setInputValue] = useState('')
 
-  return (
+
+    return (
       <>
           <PrimarySelectMultiply
               options={options}
               value={value}
               onChange={setValue}
+              inputValue={inputValue}
+              onInputChange={setInputValue}
               optionValueKey='id'
               optionLabelKey='name'
           >

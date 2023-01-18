@@ -1,39 +1,41 @@
 import React, {useState} from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { PrimarySelectMultiply } from "./primary-select-multiply"
+import { PrimarySelectSingle } from "./primary-select-single"
 import { PrimarySelectProps } from "./../../../types";
 
 export default {
-  title: "Inputs/Select/Multiply",
-  component: PrimarySelectMultiply,
+  title: "Inputs/Autocomplete/Single",
+  component: PrimarySelectSingle,
 } as Meta;
 
 const Template: Story<PrimarySelectProps<{name: string, id: string}, boolean>> = (args) => {
     const options = [
         {name: 'ua', id: '0'},
         {name: 'en', id: '1'},
-        {name: 'ru', id: '2'},
+        {name: 'ru', id: '2'}
     ]
-    const [value, setValue] = useState<{name: string, id: string}[] | []>([
-        {name: 'ua', id: '0'},
-    ])
+    const [value, setValue] = useState<{name: string, id: string} | undefined>({name: 'ua', id: '0'}),
+          [inputValue, setInputValue] = useState('')
 
-  return (
+
+    return (
       <>
-          <PrimarySelectMultiply
+          <PrimarySelectSingle
               options={options}
               value={value}
               onChange={setValue}
-              optionValueKey='id'
+              optionValueKey='name'
               optionLabelKey='name'
+              inputValue={inputValue}
+              onInputChange={setInputValue}
           >
-              {(SelectItem, {id, name}) => {
-                  return (<SelectItem key={id}  >
+              {(SelectItem, {name}) => {
+                  return (<SelectItem key={name} >
                       {name}
                   </SelectItem>)
               }}
-          </PrimarySelectMultiply>
+          </PrimarySelectSingle>
 
       </>)
 };
