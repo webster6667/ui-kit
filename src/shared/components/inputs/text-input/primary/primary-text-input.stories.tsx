@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { PrimaryInput, PrimaryInputChangeHandler } from "./index"
+import { PrimaryTextInput, PrimaryInputChangeHandler } from "./index"
 import { InputProps } from "./types";
 import { ReactComponent as UserIcon } from '@icons/user.svg'
 import { ReactComponent as HintIcon } from '@icons/hint.svg'
@@ -9,8 +9,8 @@ import { ReactComponent as HintIcon } from '@icons/hint.svg'
 
 
 export default {
-  title: "Inputs/Text",
-  component: PrimaryInput,
+  title: "Inputs/TextInput",
+  component: PrimaryTextInput,
 } as Meta;
 
 
@@ -21,21 +21,21 @@ const Template: Story<InputProps> = (args) => {
         }
 
   return (<>
-    <PrimaryInput
+    <PrimaryTextInput
         {...args}
         value={value}
         onChange={inputChangeHandler}
         LeftIcon={<UserIcon />}
     />
     <br/>
-    <PrimaryInput
+    <PrimaryTextInput
           {...args}
           value={value}
           onChange={inputChangeHandler}
           RightIcon={<HintIcon />}
     />
     <br/>
-    <PrimaryInput
+    <PrimaryTextInput
           {...args}
           value={value}
           onChange={inputChangeHandler}

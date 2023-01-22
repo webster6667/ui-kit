@@ -6,7 +6,7 @@ let PrimaryInputSizeList: 'sm' | 'md'
 
 export type PrimaryInputChangeHandler = (value: string, e: ChangeEvent<HTMLInputElement> | MouseEvent) => void
 
-export interface PrimaryInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'type'> {
+export interface PrimaryTextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'type'> {
     /**
      * Input type
      */
@@ -45,7 +45,7 @@ export interface PrimaryInputProps extends Omit<InputHTMLAttributes<HTMLInputEle
     RightIcon?: ReactNode | IconFn,
 }
 
-export interface InputProps extends PrimaryInputProps {
+export interface InputProps extends PrimaryTextInputProps {
     /**
      * is Input value filled
      */
@@ -63,6 +63,6 @@ export interface ErrorProps {
     isVisible?: boolean
 }
 
-export interface IconWrapperProps extends Pick<PrimaryInputProps, 'sizeMod'> {
+export interface IconWrapperProps extends Pick<PrimaryTextInputProps, 'sizeMod'> {
     position: 'left' | 'right'
 }

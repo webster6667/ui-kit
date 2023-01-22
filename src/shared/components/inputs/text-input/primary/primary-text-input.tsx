@@ -1,18 +1,11 @@
 import React, {FC, ChangeEventHandler} from "react";
 import {Wrapper, Input, Label, InputWrapper, Error, IconWrapper } from "./styles"
-import {PrimaryInputProps} from "./types"
-
-// Вынести в hoc
-// const [inputType, setInputType] = useState(type),
-//       togglePasswordVisibilityHandler = (e: MouseEvent<HTMLElement>) => {
-//         e.preventDefault()
-//         setInputType(inputType !== 'password' ? 'password' : 'text')
-//       }
+import {PrimaryTextInputProps} from "./types"
 
 /**
  * Primary text input
  */
-export const PrimaryInput:FC<PrimaryInputProps> = ({
+export const PrimaryTextInput:FC<PrimaryTextInputProps> = ({
    value= '',
    label = 'placeholder',
    error,
