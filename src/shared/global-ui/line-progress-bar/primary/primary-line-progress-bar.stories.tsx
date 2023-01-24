@@ -1,16 +1,16 @@
 import React, {useState} from "react";
-import { PrimaryButton } from '@shared/components/inputs/button/primary'
+import { PrimaryButton } from '@global-ui/inputs/button/primary'
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { PrimaryCircleProgressBar } from "./primary-circle-progress-bar"
-import { PrimaryCircleProgressBarProps } from "./types";
+import { PrimaryLineProgressBar } from "./primary-line-progress-bar"
+import { PrimaryLineProgressBarProps } from "./types";
 
 export default {
-  title: "Loading/CircleProgressBar",
-  component: PrimaryCircleProgressBar,
+  title: "Loading/LineProgressBar",
+  component: PrimaryLineProgressBar,
 } as Meta;
 
-const Template: Story<PrimaryCircleProgressBarProps> = ({value = 0, ...args}) => {
+const Template: Story<PrimaryLineProgressBarProps> = ({value = 0, ...args}) => {
   const [progress, setProgress] = useState(value),
         startProgress = () => {
             setInterval(() => {
@@ -19,7 +19,7 @@ const Template: Story<PrimaryCircleProgressBarProps> = ({value = 0, ...args}) =>
         }
 
   return <div>
-      <PrimaryCircleProgressBar {...args} value={progress} />
+      <PrimaryLineProgressBar {...args} value={progress} />
       <br/>
       <PrimaryButton label='start process' onClick={startProgress} />
   </div>

@@ -40,7 +40,8 @@
       "@mixins": ["src/shared/styles/mixins/index.ts"],
       "@keyframes": ["src/shared/styles/keyframes/index.ts"],
 
-      "@typography": ["src/shared/components/typography/index.ts"],
+      "@typography": ["src/shared/global-ui/typography/index.ts"],
+      "@global-ui/*": ["src/shared/global-ui/*"],
       "@shared-components/*": ["src/shared/components/*"],
 
       "@hook": ["src/hooks/index.ts"]
