@@ -1,6 +1,6 @@
-import {InputHTMLAttributes, HTMLInputTypeAttribute, ReactNode, ChangeEvent, MouseEvent} from 'react';
+import {InputHTMLAttributes, HTMLInputTypeAttribute, ChangeEvent, MouseEvent, ReactElement} from 'react';
 
-type IconFn = () => ReactNode
+type IconFn = () => ReactElement
 
 let PrimaryInputSizeList: 'sm' | 'md'
 
@@ -38,11 +38,11 @@ export interface PrimaryTextInputProps extends Omit<InputHTMLAttributes<HTMLInpu
     /**
      * Input left icon
      */
-    LeftIcon?: ReactNode | IconFn,
+    LeftIcon?: ReactElement | IconFn,
     /**
      * Input right icon
      */
-    RightIcon?: ReactNode | IconFn,
+    RightIcon?: ReactElement | IconFn,
 }
 
 export interface InputProps extends PrimaryTextInputProps {

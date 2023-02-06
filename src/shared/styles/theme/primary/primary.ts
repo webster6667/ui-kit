@@ -19,6 +19,7 @@ export const primaryTheme = {
         },
         backgrounds: {
             primary: '#F5F5F5',
+            secondary: '#E5E5E5',
         },
         border: {
             primary: '#d2d2d2',
@@ -32,6 +33,7 @@ export const primaryTheme = {
     },
     radius: {
         md: '5px',
+        full: '500px'
     },
     zLayer: {
        first: 1,
