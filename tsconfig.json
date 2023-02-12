@@ -39,8 +39,11 @@
       "@app-theme": ["src/shared/styles/theme/index.ts"],
       "@mixins": ["src/shared/styles/mixins/index.ts"],
       "@keyframes": ["src/shared/styles/keyframes/index.ts"],
+      "@styles-const": ["src/shared/styles/const/index.ts"],
 
-      "@typography": ["src/shared/global-ui/typography/index.ts"],
+
+      "@typography": ["src/shared/ui-kit/typography/index.ts"],
+      "@grid": ["src/shared/ui-kit/grid/index.ts"],
       "@global-ui/*": ["src/shared/global-ui/*"],
       "@shared-components/*": ["src/shared/components/*"],
 
