@@ -1,5 +1,5 @@
 import React, {useState, MouseEvent, FC} from 'react'
-import { PrimaryTextInput } from "@global-ui/inputs/text-input/primary"
+import { PrimaryTextInput } from "@inputs/text-input/primary"
 import { ReactComponent as EyeCloseIcon } from '@icons/input/eye-close.svg'
 import { ReactComponent as EyeOpenIcon } from '@icons/input/eye-open.svg'
 

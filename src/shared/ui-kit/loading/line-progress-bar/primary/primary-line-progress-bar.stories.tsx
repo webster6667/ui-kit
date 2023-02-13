@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { PrimaryButton } from '@global-ui/inputs/button/primary'
+import { PrimaryButton } from '@buttons/primary'
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import { PrimaryLineProgressBar } from "./primary-line-progress-bar"

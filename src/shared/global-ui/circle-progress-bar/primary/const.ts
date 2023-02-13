@@ -1,1 +1,0 @@
-export const startDeg = 135

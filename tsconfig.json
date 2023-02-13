@@ -42,11 +42,12 @@
       "@styles-const": ["src/shared/styles/const/index.ts"],
 
 
+      "@ui-kit/*": ["src/shared/ui-kit/*"],
       "@typography": ["src/shared/ui-kit/typography/index.ts"],
       "@grid": ["src/shared/ui-kit/grid/index.ts"],
       "@buttons/*": ["src/shared/ui-kit/button/*"],
-      "@global-ui/*": ["src/shared/global-ui/*"],
-      "@shared-components/*": ["src/shared/components/*"],
+      "@inputs/*": ["src/shared/ui-kit/inputs/*"],
+
 
       "@hook": ["src/hooks/index.ts"]
     }

@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import { PrimaryTextInput } from "@global-ui/inputs/text-input/primary"
-import { PrimaryTooltip } from '@shared-components/tooltip/primary'
+import { PrimaryTextInput } from "@inputs/text-input/primary"
+import { PrimaryTooltip } from '@ui-kit/tooltip/primary'
 import {iconList} from "./const"
 import { ReactComponent as HintIcon} from '@icons/hint.svg'
 
