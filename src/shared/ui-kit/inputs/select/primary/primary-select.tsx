@@ -9,6 +9,17 @@ import { ReactComponent as CrossIcon } from '@icons/crosses/cross.svg'
 
 import { PrimarySelectProps, SelectItemProps } from "./types"
 
+interface Props<T extends boolean> {
+    isCreated: T
+    title?: T extends true ? never : string
+}
+
+export const Test = <T extends boolean>(props: Props<T>) => {
+    return <div>
+        1
+    </div>
+}
+
 /**
  * Primary UI component for user interaction
  */
@@ -157,6 +168,8 @@ export const PrimarySelect = <
         <OptionListWrapper >
             {optionList}
         </OptionListWrapper>
+
+        <Test isCreated={true} />
     </Wrapper>
 
 };

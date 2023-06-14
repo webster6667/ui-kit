@@ -1,3 +1,5 @@
+import { bgColors } from './../const'
+
 interface ColSettingsProps {
     col?: number
     offsetX?: number
@@ -12,4 +14,5 @@ export interface RowProps {
     debug?: boolean
 
     isRelative?: boolean
+    bgColor?: (typeof bgColors)[number]
 }
